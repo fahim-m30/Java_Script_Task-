@@ -1,33 +1,50 @@
-class EventEmitter {
-  constructor() {
+class EventEmitter 
+{
+  constructor() 
+  {
     this.events = {};
   }
 
-  on(eventName, callback) {
-    if (!this.events[eventName]) {
+  on(eventName, callback) 
+  {
+    if (!this.events[eventName]) 
+    {
       this.events[eventName] = [];
     }
 
     this.events[eventName].push(callback);
   }
 
-  off(eventName, callback) {
-    if (!this.events[eventName]) return;
+  off(eventName, callback) 
+  {
+    if (!this.events[eventName]) 
+    {
+        return;
+
+    }
+        
 
     this.events[eventName] = this.events[eventName].filter(
       (cb) => cb !== callback
     );
   }
-  emit(eventName, data) {
-    if (!this.events[eventName]) return;
+  emit(eventName, data) 
+  {
+    if (!this.events[eventName]) 
+        {
+            return;
+        }
 
-    this.events[eventName].forEach((callback) => {
+    this.events[eventName].forEach((callback) => 
+    {
       callback(data);
     });
   }
 
-  once(eventName, callback) {
-    const wrapper = (data) => {
+  once(eventName, callback) 
+  {
+    const wrapper = (data) => 
+    {
       callback(data);
       this.off(eventName, wrapper);
     };
@@ -37,7 +54,8 @@ class EventEmitter {
 }
 const emitter = new EventEmitter();
 
-function loginUser(user) {
+function loginUser(user) 
+{
   console.log("User Logged In:", user);
 }
 
@@ -49,7 +67,8 @@ emitter.off("login", loginUser);
 
 emitter.emit("login", "Mahdi");
  
-emitter.once("signup", (user) => {
+emitter.once("signup", (user) => 
+{
   console.log("Welcome", user);
 });
 
