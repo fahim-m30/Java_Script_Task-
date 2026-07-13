@@ -25,9 +25,11 @@ function Object(obj, parent = "", output = {})
 // Input
 const obj = {
     name: "Joy",
-    address: {
+    address: 
+    {
         city: "Dhaka",
-        country: {
+        country: 
+        {
             code: "BD",
             name: "Bangladesh"
         }
